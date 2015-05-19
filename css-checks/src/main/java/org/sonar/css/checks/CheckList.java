@@ -69,7 +69,8 @@ public final class CheckList {
       TrailingWhitespaceCheck.class,
       TodoTagPresenceCheck.class,
       TooManyWebFonts.class,
-      VendorPrefixWithStandard.class
+      VendorPrefixWithStandard.class,
+      WhitespaceBetweenPropertyAndValueCheck.class
       );
   }
 }

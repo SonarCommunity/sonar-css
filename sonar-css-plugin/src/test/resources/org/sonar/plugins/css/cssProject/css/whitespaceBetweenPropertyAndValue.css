@@ -1,0 +1,25 @@
+h1 {
+  color: red; /* Compliant: one single whitespace */
+}
+
+h1 {
+  color:red; /* Noncompliant: missing whitespace */
+}
+
+h1 {
+  color:red; /* Noncompliant: missing whitespace */
+  color:green; /* Noncompliant: missing whitespace */
+}
+
+h1 {
+  color:  red; /* Noncompliant: too many whitespaces */
+  color:		green; /* Noncompliant: too many whitespaces */
+}
+
+h1 {
+  color:
+red; /* Noncompliant: property and its value not defined on the same line */
+  color:
+      green; /* Noncompliant: property and its value not define on the same line */
+}
+

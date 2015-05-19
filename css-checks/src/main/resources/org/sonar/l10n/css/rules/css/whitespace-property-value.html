@@ -1,0 +1,23 @@
+<p>For readability reasons, there should be one single whitespace between the property colon and its value</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+h1 {
+  color:red;         /* Noncompliant: missing whitespace */
+}
+
+h1 {
+  color:  red;       /* Noncompliant: too many whitespaces */
+  color:      green; /* Noncompliant: too many whitespaces */
+}
+
+h1 {
+  color:
+    red;             /* Noncompliant: property and its value not defined on the same line */
+}
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+h1 {
+  color: red;
+}
+</pre>
