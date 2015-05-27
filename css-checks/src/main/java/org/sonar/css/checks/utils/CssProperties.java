@@ -21,7 +21,6 @@ package org.sonar.css.checks.utils;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import org.sonar.css.checks.validators.propertyValue.OutlineStyleValidator;
 import org.sonar.css.checks.validators.propertyValue.BorderStyleValidator;
 import org.sonar.css.checks.validators.propertyValue.BorderWidthValidator;
 import org.sonar.css.checks.validators.propertyValue.EnumValidator;
@@ -30,6 +29,8 @@ import org.sonar.css.checks.validators.propertyValue.IntegerValidator;
 import org.sonar.css.checks.validators.propertyValue.LengthValidator;
 import org.sonar.css.checks.validators.propertyValue.MarginWidthValidator;
 import org.sonar.css.checks.validators.propertyValue.NumberValidator;
+import org.sonar.css.checks.validators.propertyValue.OutlineStyleValidator;
+import org.sonar.css.checks.validators.propertyValue.PaddingWidthValidator;
 import org.sonar.css.checks.validators.propertyValue.PercentageValidator;
 import org.sonar.css.checks.validators.propertyValue.UriValidator;
 
@@ -51,6 +52,7 @@ public final class CssProperties {
   private static final LengthValidator lengthValidator = new LengthValidator();
   private static final MarginWidthValidator marginWidthValidator = new MarginWidthValidator();
   private static final NumberValidator numberValidator = new NumberValidator();
+  private static final PaddingWidthValidator paddingWidthValidator = new PaddingWidthValidator();
   private static final PercentageValidator percentageValidator = new PercentageValidator();
   private static final UriValidator uriValidator = new UriValidator();
 
@@ -432,12 +434,12 @@ public final class CssProperties {
 
     // P
     .put("padding", new CssProperty("padding", Collections.<String>emptyList(), null))
-    .put("padding-bottom", new CssProperty("padding-bottom", Collections.<String>emptyList(), null))
+    .put("padding-bottom", new CssProperty("padding-bottom", Collections.<String>emptyList(), ImmutableList.of(paddingWidthValidator, inheritValidator)))
     .put("padding-end", new CssProperty("padding-end", ImmutableList.of("-webkit-", "-moz-"), null))
-    .put("padding-left", new CssProperty("padding-left", Collections.<String>emptyList(), null))
-    .put("padding-right", new CssProperty("padding-right", Collections.<String>emptyList(), null))
+    .put("padding-left", new CssProperty("padding-left", Collections.<String>emptyList(), ImmutableList.of(paddingWidthValidator, inheritValidator)))
+    .put("padding-right", new CssProperty("padding-right", Collections.<String>emptyList(), ImmutableList.of(paddingWidthValidator, inheritValidator)))
     .put("padding-start", new CssProperty("padding-start", ImmutableList.of("-webkit-", "-moz-"), null))
-    .put("padding-top", new CssProperty("padding-top", Collections.<String>emptyList(), null))
+    .put("padding-top", new CssProperty("padding-top", Collections.<String>emptyList(), ImmutableList.of(paddingWidthValidator, inheritValidator)))
     .put("page", new CssProperty("page", Collections.<String>emptyList(), null))
     .put("page-break-after", new CssProperty(
       "page-break-after",

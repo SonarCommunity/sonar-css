@@ -20,35 +20,18 @@
 package org.sonar.css.checks.validators.propertyValue;
 
 import com.sonar.sslr.api.AstNode;
-import org.sonar.css.parser.CssGrammar;
 
-public class PercentageValidator implements PropertyValueValidator {
+public class PaddingWidthValidator implements PropertyValueValidator {
 
-  private final boolean positiveOnly;
-
-  public PercentageValidator() {
-    positiveOnly = false;
-  }
-
-  public PercentageValidator(boolean positiveOnly) {
-    this.positiveOnly = positiveOnly;
-  }
+  private final LengthValidator lengthValidator = new LengthValidator(true);
+  private final PercentageValidator percentageValidator = new PercentageValidator(true);
 
   public boolean isValid(AstNode astNode) {
-    if (positiveOnly) {
-      return astNode.getFirstChild(CssGrammar.PERCENTAGE) != null
-        && Double.valueOf(astNode.getFirstChild(CssGrammar.PERCENTAGE).getTokenValue()) >= 0;
-    } else {
-      return astNode.getFirstChild(CssGrammar.PERCENTAGE) != null;
-    }
+    return lengthValidator.isValid(astNode) || percentageValidator.isValid(astNode);
   }
 
   public String getFormat() {
-    if (positiveOnly) {
-      return "<percentage> (>=0)";
-    } else {
-      return "<percentage>";
-    }
+    return lengthValidator.getFormat() + " | " + percentageValidator.getFormat();
   }
 
 }

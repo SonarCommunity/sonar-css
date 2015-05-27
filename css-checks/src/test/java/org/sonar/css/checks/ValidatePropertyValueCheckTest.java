@@ -55,7 +55,9 @@ public class ValidatePropertyValueCheckTest {
       .atLine(154).withMessage("Update the invalid value of property \"border-right-style\". Expected format: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit").next()
       .atLine(155).withMessage("Update the invalid value of property \"border-left-style\". Expected format: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit").next()
       .atLine(156).withMessage("Update the invalid value of property \"outline-style\". Expected format: none | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit").next()
-      .atLine(157).withMessage("Update the invalid value of property \"outline-style\". Expected format: none | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit").noMore();
+      .atLine(157).withMessage("Update the invalid value of property \"outline-style\". Expected format: none | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit").next()
+      .atLine(168).withMessage("Update the invalid value of property \"padding-bottom\". Expected format: <length> (>=0) | <percentage> (>=0) | inherit").next()
+      .atLine(169).withMessage("Update the invalid value of property \"padding-top\". Expected format: <length> (>=0) | <percentage> (>=0) | inherit").noMore();
   }
 
 }

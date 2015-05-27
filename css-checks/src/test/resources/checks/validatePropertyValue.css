@@ -157,3 +157,15 @@
    outline-style: hidden; /* Noncompliant */
    outline-style: dotted;
 }
+
+/* Padding with validation */
+.mybox {
+  padding-top: 10px;
+  padding-top: 0;
+  padding-right: 10%;
+  padding-left: 10.5%;
+  padding-bottom: -0;
+  padding-bottom: -0.3px; /* Non compliant */
+  padding-top: -3%; /* Non compliant */
+  padding-top: inherit;
+}
