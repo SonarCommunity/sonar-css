@@ -48,7 +48,10 @@ public class ValidatePropertyValueCheckTest {
       .atLine(119).withMessage("Update the invalid value of property \"border-top-width\". Expected format: thin | medium | thick | <length> (>=0) | inherit").next()
       .atLine(120).withMessage("Update the invalid value of property \"border-top-width\". Expected format: thin | medium | thick | <length> (>=0) | inherit").next()
       .atLine(121).withMessage("Update the invalid value of property \"border-top-width\". Expected format: thin | medium | thick | <length> (>=0) | inherit").next()
-      .atLine(122).withMessage("Update the invalid value of property \"border-top-width\". Expected format: thin | medium | thick | <length> (>=0) | inherit").noMore();
+      .atLine(122).withMessage("Update the invalid value of property \"border-top-width\". Expected format: thin | medium | thick | <length> (>=0) | inherit").next()
+      .atLine(139).withMessage("Update the invalid value of property \"margin-top\". Expected format: auto | <length> | <percentage> | inherit").next()
+      .atLine(140).withMessage("Update the invalid value of property \"margin-top\". Expected format: auto | <length> | <percentage> | inherit").next()
+      .atLine(143).withMessage("Update the invalid value of property \"margin-top\". Expected format: auto | <length> | <percentage> | inherit").noMore();
   }
 
 }

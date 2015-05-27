@@ -26,6 +26,7 @@ import org.sonar.css.checks.validators.propertyValue.EnumValidator;
 import org.sonar.css.checks.validators.propertyValue.InheritValidator;
 import org.sonar.css.checks.validators.propertyValue.IntegerValidator;
 import org.sonar.css.checks.validators.propertyValue.LengthValidator;
+import org.sonar.css.checks.validators.propertyValue.MarginWidthValidator;
 import org.sonar.css.checks.validators.propertyValue.NumberValidator;
 import org.sonar.css.checks.validators.propertyValue.PercentageValidator;
 import org.sonar.css.checks.validators.propertyValue.UriValidator;
@@ -45,6 +46,7 @@ public final class CssProperties {
   private static final InheritValidator inheritValidator = new InheritValidator();
   private static final IntegerValidator integerValidator = new IntegerValidator();
   private static final LengthValidator lengthValidator = new LengthValidator();
+  private static final MarginWidthValidator marginWidthValidator = new MarginWidthValidator();
   private static final NumberValidator numberValidator = new NumberValidator();
   private static final PercentageValidator percentageValidator = new PercentageValidator();
   private static final UriValidator uriValidator = new UriValidator();
@@ -361,12 +363,12 @@ public final class CssProperties {
 
     // M
     .put("margin", new CssProperty("margin", Collections.<String>emptyList(), null))
-    .put("margin-bottom", new CssProperty("margin-bottom", Collections.<String>emptyList(), null))
+    .put("margin-bottom", new CssProperty("margin-bottom", Collections.<String>emptyList(), ImmutableList.of(marginWidthValidator, inheritValidator)))
     .put("margin-end", new CssProperty("margin-end", ImmutableList.of("-webkit-", "-moz-"), null))
-    .put("margin-left", new CssProperty("margin-left", Collections.<String>emptyList(), null))
-    .put("margin-right", new CssProperty("margin-right", Collections.<String>emptyList(), null))
+    .put("margin-left", new CssProperty("margin-left", Collections.<String>emptyList(), ImmutableList.of(marginWidthValidator, inheritValidator)))
+    .put("margin-right", new CssProperty("margin-right", Collections.<String>emptyList(), ImmutableList.of(marginWidthValidator, inheritValidator)))
     .put("margin-start", new CssProperty("margin-start", ImmutableList.of("-webkit-", "-moz-"), null))
-    .put("margin-top", new CssProperty("margin-top", Collections.<String>emptyList(), null))
+    .put("margin-top", new CssProperty("margin-top", Collections.<String>emptyList(), ImmutableList.of(marginWidthValidator, inheritValidator)))
     .put("mark", new CssProperty("mark", Collections.<String>emptyList(), null))
     .put("mark-after", new CssProperty("mark-after", Collections.<String>emptyList(), null))
     .put("mark-before", new CssProperty("mark-before", Collections.<String>emptyList(), null))

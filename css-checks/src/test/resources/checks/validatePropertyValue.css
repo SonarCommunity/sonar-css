@@ -101,7 +101,7 @@
   blabla: abc;
 }
 
-/* Positive length validation */
+/* Border width validation */
 .mybox {
   border-top-width: 10px;
   border-top-width: 0.5em;
@@ -120,4 +120,28 @@
   border-top-width: -10px; /* Noncompliant */
   border-top-width: -0.5em; /* Noncompliant */
   border-top-width: abc; /* Noncompliant */
+}
+
+/* Margin width validation */
+.mybox {
+  margin-top: 10px;
+  margin-top: 0.5em;
+  margin-top: inherit;
+  margin-top: auto;
+  margin-top: +10px;
+  margin-top: +0.5em;
+  margin-top: 0;
+  margin-top: +0;
+  margin-top: -0;
+  margin-top: 0.0;
+  margin-top: +0.0;
+  margin-top: -0.0;
+  margin-top: 10; /* Noncompliant */
+  margin-top: -10; /* Noncompliant */
+  margin-top: -10px;
+  margin-top: -0.5em;
+  margin-top: abc; /* Noncompliant */
+  margin-top: 10%;
+  margin-top: -10%;
+  margin-top: 10.3%;
 }
