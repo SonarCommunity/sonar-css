@@ -24,11 +24,26 @@ import org.sonar.css.parser.CssGrammar;
 
 public class LengthValidator implements PropertyValueValidator {
 
+  private boolean positiveOnly;
+
+  public LengthValidator() {
+    positiveOnly = false;
+  }
+
+  public LengthValidator(boolean positiveOnly) {
+    this.positiveOnly = positiveOnly;
+  }
+
   public boolean isValid(AstNode astNode) {
     if (astNode.getFirstChild(CssGrammar.DIMENSION) != null
       && astNode.getFirstChild(CssGrammar.DIMENSION).getFirstChild(CssGrammar.NUMBER) != null
       && astNode.getFirstChild(CssGrammar.DIMENSION).getFirstChild(CssGrammar.unit) != null) {
-      return new UnitValidator().isValid(astNode.getFirstChild(CssGrammar.DIMENSION).getFirstChild(CssGrammar.unit));
+      if (positiveOnly) {
+        return Double.valueOf(astNode.getFirstChild(CssGrammar.DIMENSION).getFirstChild(CssGrammar.NUMBER).getTokenValue()) >= 0
+          && new UnitValidator().isValid(astNode.getFirstChild(CssGrammar.DIMENSION).getFirstChild(CssGrammar.unit));
+      } else {
+        return new UnitValidator().isValid(astNode.getFirstChild(CssGrammar.DIMENSION).getFirstChild(CssGrammar.unit));
+      }
     }
     if (astNode.getFirstChild(CssGrammar.NUMBER) != null) {
       return new ZeroNumberValidator().isValid(astNode.getFirstChild(CssGrammar.NUMBER));
@@ -37,7 +52,11 @@ public class LengthValidator implements PropertyValueValidator {
   }
 
   public String getFormat() {
-    return "<length>";
+    if (positiveOnly) {
+      return "<length> (>=0)";
+    } else {
+      return "<length>";
+    }
   }
 
 }

@@ -100,3 +100,24 @@
 .mybox {
   blabla: abc;
 }
+
+/* Positive length validation */
+.mybox {
+  border-top-width: 10px;
+  border-top-width: 0.5em;
+  border-top-width: inherit;
+  border-top-width: thick;
+  border-top-width: +10px;
+  border-top-width: +0.5em;
+  border-top-width: 0;
+  border-top-width: +0;
+  border-top-width: -0;
+  border-top-width: 0.0;
+  border-top-width: +0.0;
+  border-top-width: -0.0;
+  border-top-width: 10; /* Noncompliant */
+  border-top-width: -10; /* Noncompliant */
+  border-top-width: -10px; /* Noncompliant */
+  border-top-width: -0.5em; /* Noncompliant */
+  border-top-width: abc; /* Noncompliant */
+}

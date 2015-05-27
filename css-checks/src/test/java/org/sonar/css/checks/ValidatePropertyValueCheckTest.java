@@ -43,7 +43,12 @@ public class ValidatePropertyValueCheckTest {
       .atLine(52).withMessage("Update the invalid value of property \"line-height\". Expected format: normal | <length> | <percentage> | <number> | inherit").next()
       .atLine(69).withMessage("Update the invalid value of property \"width\". Expected format: auto | <length> | <percentage> | inherit").next()
       .atLine(78).withMessage("Update the invalid value of property \"list-style-image\". Expected format: none | <uri> | inherit").next()
-      .atLine(79).withMessage("Update the invalid value of property \"list-style-image\". Expected format: none | <uri> | inherit").noMore();
+      .atLine(79).withMessage("Update the invalid value of property \"list-style-image\". Expected format: none | <uri> | inherit").next()
+      .atLine(118).withMessage("Update the invalid value of property \"border-top-width\". Expected format: thin | medium | thick | <length> (>=0) | inherit").next()
+      .atLine(119).withMessage("Update the invalid value of property \"border-top-width\". Expected format: thin | medium | thick | <length> (>=0) | inherit").next()
+      .atLine(120).withMessage("Update the invalid value of property \"border-top-width\". Expected format: thin | medium | thick | <length> (>=0) | inherit").next()
+      .atLine(121).withMessage("Update the invalid value of property \"border-top-width\". Expected format: thin | medium | thick | <length> (>=0) | inherit").next()
+      .atLine(122).withMessage("Update the invalid value of property \"border-top-width\". Expected format: thin | medium | thick | <length> (>=0) | inherit").noMore();
   }
 
 }
