@@ -51,7 +51,11 @@ public class ValidatePropertyValueCheckTest {
       .atLine(122).withMessage("Update the invalid value of property \"border-top-width\". Expected format: thin | medium | thick | <length> (>=0) | inherit").next()
       .atLine(139).withMessage("Update the invalid value of property \"margin-top\". Expected format: auto | <length> | <percentage> | inherit").next()
       .atLine(140).withMessage("Update the invalid value of property \"margin-top\". Expected format: auto | <length> | <percentage> | inherit").next()
-      .atLine(143).withMessage("Update the invalid value of property \"margin-top\". Expected format: auto | <length> | <percentage> | inherit").noMore();
+      .atLine(143).withMessage("Update the invalid value of property \"margin-top\". Expected format: auto | <length> | <percentage> | inherit").next()
+      .atLine(154).withMessage("Update the invalid value of property \"border-right-style\". Expected format: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit").next()
+      .atLine(155).withMessage("Update the invalid value of property \"border-left-style\". Expected format: none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit").next()
+      .atLine(156).withMessage("Update the invalid value of property \"outline-style\". Expected format: none | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit").next()
+      .atLine(157).withMessage("Update the invalid value of property \"outline-style\". Expected format: none | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit").noMore();
   }
 
 }

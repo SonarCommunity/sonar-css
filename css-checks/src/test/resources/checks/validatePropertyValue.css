@@ -145,3 +145,15 @@
   margin-top: -10%;
   margin-top: 10.3%;
 }
+
+/* Border style validation */
+.mybox {
+   border-left-style: none;
+   border-top-style: inherit;
+   border-bottom-style: dotted;
+   border-right-style: abc; /* Noncompliant */
+   border-left-style: 10; /* Noncompliant */
+   outline-style: 10; /* Noncompliant */
+   outline-style: hidden; /* Noncompliant */
+   outline-style: dotted;
+}

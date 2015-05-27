@@ -21,6 +21,8 @@ package org.sonar.css.checks.utils;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import org.sonar.css.checks.validators.propertyValue.OutlineStyleValidator;
+import org.sonar.css.checks.validators.propertyValue.BorderStyleValidator;
 import org.sonar.css.checks.validators.propertyValue.BorderWidthValidator;
 import org.sonar.css.checks.validators.propertyValue.EnumValidator;
 import org.sonar.css.checks.validators.propertyValue.InheritValidator;
@@ -42,6 +44,7 @@ import java.util.Map;
  */
 public final class CssProperties {
 
+  private static final BorderStyleValidator borderStyleValidator = new BorderStyleValidator();
   private static final BorderWidthValidator borderWidthValidator = new BorderWidthValidator();
   private static final InheritValidator inheritValidator = new InheritValidator();
   private static final IntegerValidator integerValidator = new IntegerValidator();
@@ -124,7 +127,7 @@ public final class CssProperties {
     .put("border-bottom-color", new CssProperty("border-bottom-color", Collections.<String>emptyList(), null))
     .put("border-bottom-left-radius", new CssProperty("border-bottom-left-radius", Collections.<String>emptyList(), null))
     .put("border-bottom-right-radius", new CssProperty("border-bottom-right-radius", Collections.<String>emptyList(), null))
-    .put("border-bottom-style", new CssProperty("border-bottom-style", Collections.<String>emptyList(), null))
+    .put("border-bottom-style", new CssProperty("border-bottom-style", Collections.<String>emptyList(), ImmutableList.of(borderStyleValidator, inheritValidator)))
     .put("border-bottom-width", new CssProperty("border-bottom-width", Collections.<String>emptyList(), ImmutableList.of(borderWidthValidator, inheritValidator)))
     .put("border-collapse", new CssProperty(
       "border-collapse",
@@ -144,12 +147,12 @@ public final class CssProperties {
     .put("border-image-width", new CssProperty("border-image-width", Collections.<String>emptyList(), null))
     .put("border-left", new CssProperty("border-left", Collections.<String>emptyList(), null))
     .put("border-left-color", new CssProperty("border-left-color", Collections.<String>emptyList(), null))
-    .put("border-left-style", new CssProperty("border-left-style", Collections.<String>emptyList(), null))
+    .put("border-left-style", new CssProperty("border-left-style", Collections.<String>emptyList(), ImmutableList.of(borderStyleValidator, inheritValidator)))
     .put("border-left-width", new CssProperty("border-left-width", Collections.<String>emptyList(), ImmutableList.of(borderWidthValidator, inheritValidator)))
     .put("border-radius", new CssProperty("border-radius", ImmutableList.of("-webkit-"), null))
     .put("border-right", new CssProperty("border-right", Collections.<String>emptyList(), null))
     .put("border-right-color", new CssProperty("border-right-color", Collections.<String>emptyList(), null))
-    .put("border-right-style", new CssProperty("border-right-style", Collections.<String>emptyList(), null))
+    .put("border-right-style", new CssProperty("border-right-style", Collections.<String>emptyList(), ImmutableList.of(borderStyleValidator, inheritValidator)))
     .put("border-right-width", new CssProperty("border-right-width", Collections.<String>emptyList(), ImmutableList.of(borderWidthValidator, inheritValidator)))
     .put("border-start", new CssProperty("border-start", ImmutableList.of("-webkit-", "-moz-"), null))
     .put("border-start-color", new CssProperty("border-start-color", ImmutableList.of("-webkit-", "-moz-"), null))
@@ -161,7 +164,7 @@ public final class CssProperties {
     .put("border-top-color", new CssProperty("border-top-color", Collections.<String>emptyList(), null))
     .put("border-top-left-radius", new CssProperty("border-top-left-radius", Collections.<String>emptyList(), null))
     .put("border-top-right-radius", new CssProperty("border-top-right-radius", Collections.<String>emptyList(), null))
-    .put("border-top-style", new CssProperty("border-top-style", Collections.<String>emptyList(), null))
+    .put("border-top-style", new CssProperty("border-top-style", Collections.<String>emptyList(), ImmutableList.of(borderStyleValidator, inheritValidator)))
     .put("border-top-width", new CssProperty("border-top-width", Collections.<String>emptyList(), ImmutableList.of(borderWidthValidator, inheritValidator)))
     .put("border-width", new CssProperty("border-width", Collections.<String>emptyList(), null))
     .put("bottom", new CssProperty(
@@ -416,7 +419,7 @@ public final class CssProperties {
     .put("outline", new CssProperty("outline", Collections.<String>emptyList(), null))
     .put("outline-color", new CssProperty("outline-color", Collections.<String>emptyList(), null))
     .put("outline-offset", new CssProperty("outline-offset", Collections.<String>emptyList(), null))
-    .put("outline-style", new CssProperty("outline-style", Collections.<String>emptyList(), null))
+    .put("outline-style", new CssProperty("outline-style", Collections.<String>emptyList(), ImmutableList.of(new OutlineStyleValidator(), inheritValidator)))
     .put("outline-width", new CssProperty("outline-width", Collections.<String>emptyList(), ImmutableList.of(borderWidthValidator, inheritValidator)))
     .put("overflow", new CssProperty(
       "overflow",
