@@ -19,12 +19,24 @@
  */
 package org.sonar.css.checks.validators.propertyValue;
 
-import com.google.common.collect.ImmutableList;
+import com.sonar.sslr.api.AstNode;
 
-public class UnitValidator extends EnumValidator {
+public class PauseValidator implements PropertyValueValidator {
 
-  public UnitValidator() {
-    super(ImmutableList.of("em", "ex", "in", "cm", "mm", "pt", "pc", "px"));
+  private final TimeValidator timeValidator = new TimeValidator();
+
+  /*
+   * positiveOnly = true even if it is not properly stated that percentage may not be negative
+   * at http://www.w3.org/TR/CSS21/aural.html#propdef-pause-after
+   */
+  private final PercentageValidator percentageValidator = new PercentageValidator(true);
+
+  public boolean isValid(AstNode astNode) {
+    return timeValidator.isValid(astNode) || percentageValidator.isValid(astNode);
+  }
+
+  public String getFormat() {
+    return timeValidator.getFormat() + " | " + percentageValidator.getFormat();
   }
 
 }

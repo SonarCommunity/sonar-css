@@ -20,19 +20,20 @@
 package org.sonar.css.checks.validators.propertyValue;
 
 import com.google.common.collect.ImmutableList;
+import com.sonar.sslr.api.AstNode;
 
-public class LengthValidator extends DimensionValidator {
+public class PitchValidator implements PropertyValueValidator {
 
-  public LengthValidator(boolean positiveOnly) {
-    super(positiveOnly, ImmutableList.of("in", "cm", "mm", "pt", "pc", "px", "em", "ex"));
+  private final FrequencyValidator frequencyValidator = new FrequencyValidator();
+  private final EnumValidator enumValidator = new EnumValidator(ImmutableList.of("x-low", "low", "medium", "high", "x-high"));
+  private final InheritValidator inheritValidator = new InheritValidator();
+
+  public boolean isValid(AstNode astNode) {
+    return enumValidator.isValid(astNode) || frequencyValidator.isValid(astNode) || inheritValidator.isValid(astNode);
   }
 
   public String getFormat() {
-    if (isPositiveOnly()) {
-      return "<length> (>=0)";
-    } else {
-      return "<length>";
-    }
+    return frequencyValidator.getFormat() + " | " + enumValidator.getFormat() + " | " + inheritValidator.getFormat();
   }
 
 }

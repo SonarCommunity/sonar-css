@@ -32,7 +32,7 @@ public class EnumValidator implements PropertyValueValidator {
   }
 
   public boolean isValid(AstNode astNode) {
-    return allowedValues.contains(astNode.getTokenValue().toLowerCase());
+    return allowedValues.contains(astNode.getTokenValue());
   }
 
   public String getFormat() {

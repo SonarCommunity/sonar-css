@@ -25,7 +25,7 @@ import com.sonar.sslr.api.AstNode;
 public class MarginWidthValidator implements PropertyValueValidator {
 
   private final EnumValidator enumValidator = new EnumValidator(ImmutableList.of("auto"));
-  private final LengthValidator lengthValidator = new LengthValidator();
+  private final LengthValidator lengthValidator = new LengthValidator(false);
   private final PercentageValidator percentageValidator = new PercentageValidator();
 
   public boolean isValid(AstNode astNode) {

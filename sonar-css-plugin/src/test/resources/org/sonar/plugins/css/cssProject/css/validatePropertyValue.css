@@ -158,14 +158,37 @@
    outline-style: dotted;
 }
 
-/* Padding with validation */
+/* Padding width validation */
 .mybox {
   padding-top: 10px;
   padding-top: 0;
   padding-right: 10%;
   padding-left: 10.5%;
   padding-bottom: -0;
-  padding-bottom: -0.3px; /* Non compliant */
-  padding-top: -3%; /* Non compliant */
+  padding-bottom: -0.3px; /* Noncompliant */
+  padding-top: -3%; /* Noncompliant */
   padding-top: inherit;
+}
+
+/* Time validation */
+.mybox {
+  pause-before: 10s;
+  pause-before: 1.1ms;
+  pause-after: 10%;
+  pause-after: 12.3%;
+  pause-after: -2%; /* Noncompliant */
+  pause-after: -3ms; /* Noncompliant */
+  pause-after: 4; /* Noncompliant */
+  pause-after: inherit;
+}
+
+/* Frequency validation */
+.mybox {
+  pitch: 10kHz;
+  pitch: 100Hz;
+  pitch: 100.5Hz;
+  pitch: -10Hz; /* Noncompliant */
+  pitch: 10; /* Noncompliant */
+  pitch: inherit;
+  pitch: x-low;
 }

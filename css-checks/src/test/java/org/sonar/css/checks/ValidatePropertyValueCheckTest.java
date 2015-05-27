@@ -57,7 +57,12 @@ public class ValidatePropertyValueCheckTest {
       .atLine(156).withMessage("Update the invalid value of property \"outline-style\". Expected format: none | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit").next()
       .atLine(157).withMessage("Update the invalid value of property \"outline-style\". Expected format: none | dotted | dashed | solid | double | groove | ridge | inset | outset | inherit").next()
       .atLine(168).withMessage("Update the invalid value of property \"padding-bottom\". Expected format: <length> (>=0) | <percentage> (>=0) | inherit").next()
-      .atLine(169).withMessage("Update the invalid value of property \"padding-top\". Expected format: <length> (>=0) | <percentage> (>=0) | inherit").noMore();
+      .atLine(169).withMessage("Update the invalid value of property \"padding-top\". Expected format: <length> (>=0) | <percentage> (>=0) | inherit").next()
+      .atLine(179).withMessage("Update the invalid value of property \"pause-after\". Expected format: <time> | <percentage> (>=0) | inherit").next()
+      .atLine(180).withMessage("Update the invalid value of property \"pause-after\". Expected format: <time> | <percentage> (>=0) | inherit").next()
+      .atLine(181).withMessage("Update the invalid value of property \"pause-after\". Expected format: <time> | <percentage> (>=0) | inherit").next()
+        .atLine(190).withMessage("Update the invalid value of property \"pitch\". Expected format: <frequency> | x-low | low | medium | high | x-high | inherit").next()
+        .atLine(191).withMessage("Update the invalid value of property \"pitch\". Expected format: <frequency> | x-low | low | medium | high | x-high | inherit").noMore();
   }
 
 }

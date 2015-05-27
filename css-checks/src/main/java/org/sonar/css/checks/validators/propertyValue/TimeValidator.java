@@ -21,18 +21,14 @@ package org.sonar.css.checks.validators.propertyValue;
 
 import com.google.common.collect.ImmutableList;
 
-public class LengthValidator extends DimensionValidator {
+public class TimeValidator extends DimensionValidator {
 
-  public LengthValidator(boolean positiveOnly) {
-    super(positiveOnly, ImmutableList.of("in", "cm", "mm", "pt", "pc", "px", "em", "ex"));
+  public TimeValidator() {
+    super(true, ImmutableList.of("ms", "s"));
   }
 
   public String getFormat() {
-    if (isPositiveOnly()) {
-      return "<length> (>=0)";
-    } else {
-      return "<length>";
-    }
+    return "<time>";
   }
 
 }

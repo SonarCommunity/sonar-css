@@ -21,6 +21,8 @@ package org.sonar.css.checks.utils;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import java.util.Collections;
+import java.util.Map;
 import org.sonar.css.checks.validators.propertyValue.BorderStyleValidator;
 import org.sonar.css.checks.validators.propertyValue.BorderWidthValidator;
 import org.sonar.css.checks.validators.propertyValue.EnumValidator;
@@ -31,11 +33,10 @@ import org.sonar.css.checks.validators.propertyValue.MarginWidthValidator;
 import org.sonar.css.checks.validators.propertyValue.NumberValidator;
 import org.sonar.css.checks.validators.propertyValue.OutlineStyleValidator;
 import org.sonar.css.checks.validators.propertyValue.PaddingWidthValidator;
+import org.sonar.css.checks.validators.propertyValue.PauseValidator;
 import org.sonar.css.checks.validators.propertyValue.PercentageValidator;
+import org.sonar.css.checks.validators.propertyValue.PitchValidator;
 import org.sonar.css.checks.validators.propertyValue.UriValidator;
-
-import java.util.Collections;
-import java.util.Map;
 
 /**
  * Properties from https://github.com/stubbornella/csslint/blob/c31f1b9c89fa102eb89e96807be9d290110887e5/lib/parserlib.js
@@ -49,10 +50,11 @@ public final class CssProperties {
   private static final BorderWidthValidator borderWidthValidator = new BorderWidthValidator();
   private static final InheritValidator inheritValidator = new InheritValidator();
   private static final IntegerValidator integerValidator = new IntegerValidator();
-  private static final LengthValidator lengthValidator = new LengthValidator();
+  private static final LengthValidator lengthValidator = new LengthValidator(false);
   private static final MarginWidthValidator marginWidthValidator = new MarginWidthValidator();
   private static final NumberValidator numberValidator = new NumberValidator();
   private static final PaddingWidthValidator paddingWidthValidator = new PaddingWidthValidator();
+  private static final PauseValidator pauseValidator = new PauseValidator();
   private static final PercentageValidator percentageValidator = new PercentageValidator();
   private static final UriValidator uriValidator = new UriValidator();
 
@@ -458,12 +460,12 @@ public final class CssProperties {
     )
     .put("page-policy", new CssProperty("page-policy", Collections.<String>emptyList(), null))
     .put("pause", new CssProperty("pause", Collections.<String>emptyList(), null))
-    .put("pause-after", new CssProperty("pause-after", Collections.<String>emptyList(), null))
-    .put("pause-before", new CssProperty("pause-before", Collections.<String>emptyList(), null))
+    .put("pause-after", new CssProperty("pause-after", Collections.<String>emptyList(), ImmutableList.of(pauseValidator, inheritValidator)))
+    .put("pause-before", new CssProperty("pause-before", Collections.<String>emptyList(), ImmutableList.of(pauseValidator, inheritValidator)))
     .put("perspective", new CssProperty("perspective", Collections.<String>emptyList(), null))
     .put("perspective-origin", new CssProperty("perspective-origin", Collections.<String>emptyList(), null))
     .put("phonemes", new CssProperty("phonemes", Collections.<String>emptyList(), null))
-    .put("pitch", new CssProperty("pitch", Collections.<String>emptyList(), null))
+    .put("pitch", new CssProperty("pitch", Collections.<String>emptyList(), ImmutableList.of(new PitchValidator())))
     .put("pitch-range", new CssProperty(
       "pitch-range",
       Collections.<String>emptyList(),
