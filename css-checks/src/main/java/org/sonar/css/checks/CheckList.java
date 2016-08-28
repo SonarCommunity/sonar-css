@@ -34,6 +34,7 @@ public final class CheckList {
 
   @SuppressWarnings("rawtypes")
   public static Collection<Class> getChecks() {
+    System.out.println("fixme fixme fixme fixme fixme fixme fixme fixme fixme fixme ");
     return ImmutableList.<Class>of(
       AllGradientDefinitionsCheck.class,
       AlphabetizeDeclarationsCheck.class,
