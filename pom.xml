@@ -69,7 +69,7 @@
     <license.title>SonarQube CSS Plugin</license.title>
     <license.mailto>mailto: kende.tamas@gmail.com and david.racodon@gmail.com</license.mailto>
     <license.owner>Tamas Kende and David RACODON</license.owner>
-    <sonar.version>5.6</sonar.version>
+    <sonar.version>5.6.7</sonar.version>
     <sslr.version>1.21</sslr.version>
     <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
   </properties>
